@@ -83,7 +83,7 @@ nav {
   color: #2e2e2e;
 }
 .card-title a:hover {
-  color: #fa9c23;
+  color: #fa9c23 !important;
   text-decoration: none;
 }
 

@@ -11,7 +11,12 @@ export const productReducers = (state = {products:[]}, action=>{
               loading:true,
               products:[]
           }
-         
+          case ALL_PRODUCTS_SUCCESS:
+            return{
+                loading:false,
+                products:action.payload.products,
+                productsCount:action.payload.productsCount
+            }
 
 
         default:

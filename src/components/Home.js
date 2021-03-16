@@ -1,6 +1,18 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import MetaData from './layouts/MetaData'
+import { useDispatch, useSelector } from 'react-redux'
+import {getProducts} from '../actions/productActions'
 const Home = () => {
+ 
+  const dispatch = useDispatch();
+  //useEffect is the hook that is going to run this component basically routes, it is the first thing to run when this component loads
+  //It's much like a constructor of the class
+  useEffect(() => {
+//so inside here we have to call our function
+   dispatch(getProducts());
+  },[dispatch])
+
+
     return (
         <Fragment >
           <MetaData title={'Buy best products online'}/>

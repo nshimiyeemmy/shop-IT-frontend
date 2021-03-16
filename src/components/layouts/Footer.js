@@ -3,7 +3,8 @@ import '../../App.css'
 const Footer = () => {
     return (
         <Fragment>      
-<footer className="container-fluid bg-grey py-5">
+<footer className="container-fluid bg-grey pb-2 pt-5">
+    
    <div className="row">
       <div className="col-md-6">
          <div className="row">
@@ -24,7 +25,7 @@ const Footer = () => {
       </div>
       <div className="col-md-6">
          <div className="row">
-            <div className="col-md-6 px-4">
+            <div className="col-md-3 px-4">
                <h5> Help us</h5>
                <div className="row ">
                   <div className="col-md-6">
@@ -37,7 +38,16 @@ const Footer = () => {
                         <li> <a href="#"> Contact</a> </li>
                      </ul>
                   </div>
-                  <div className="col-md-6 px-4">
+               </div>
+            </div>
+
+
+
+
+            <div className="col-md-3 px-4">
+               <h5> Other links</h5>
+               <div className="row ">
+                  <div className="col-md-6">
                      <ul>
                         <li> <a href="#"> Cab Faciliy</a> </li>
                         <li> <a href="#"> Fax</a> </li>
@@ -49,6 +59,8 @@ const Footer = () => {
                   </div>
                </div>
             </div>
+
+
             <div className="col-md-6 ">
                <h5> Newsletter</h5>
                <div className="social">

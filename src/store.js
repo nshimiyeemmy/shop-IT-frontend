@@ -3,10 +3,10 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux'
 import thunk from 'redux-thunk'
 import {composeWithDevTools} from 'redux-devtools-extension'
-
+import {productReducers} from './reducers/productReducers'
 //creating reducers for every resource such as users, products
 const reducer = combineReducers({
-
+ products:productReducers
 })
 
 //this inital state contains all the data that we want to put in the state just before loading the application

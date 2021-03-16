@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const Home = () => {
     return (
-        <div className="container container-fluid home">
+        <Fragment >
         <h1 id="products_heading">Latest Products</h1>
 
     <section id="products" className="container mt-5">
@@ -108,7 +108,7 @@ const Home = () => {
        </div>
     </section>
             
-        </div>
+        </Fragment>
     )
 }
 

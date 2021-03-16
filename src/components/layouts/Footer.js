@@ -2,7 +2,7 @@ import React, { Fragment } from 'react'
 import '../../App.css'
 const Footer = () => {
     return (
-        <Fragment>      
+        <div className="container container-fluid">      
 <footer className="container-fluid bg-grey pb-2 pt-5">
     <div className="foot">
    <div className="row">
@@ -12,7 +12,8 @@ const Footer = () => {
                <div className="logo-part">
                   <img src="./images/logo.png" className="w-50 logo-footer" />
                   <p>7637 Laurel Dr. King Of Prussia, PA 19406</p>
-                  <p>Use this tool as test data for an automated system or find your next pen</p>
+                  <p>Shop-IT sells high-end, eco-conscious technological equipments to the people. 
+                     Their product descriptions match their style: sassy, yet classy.</p>
                </div>
             </div>
             <div className="col-md-6 px-4">
@@ -67,7 +68,6 @@ const Footer = () => {
                   <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
                   <a href="#"><i className="fa fa-instagram" aria-hidden="true"></i></a>
                   <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
-                  <a href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                </div>
                <form className="form-footer my-3">
                   <input type="text"  placeholder="search here...." name="search"/>
@@ -81,7 +81,7 @@ const Footer = () => {
             </div>
             <div className="text-center mt-1">Shopping Cart 2021-2020, All rights reserved</div>
             </footer>
-                    </Fragment>
+                    </div>
                 )
             }
 

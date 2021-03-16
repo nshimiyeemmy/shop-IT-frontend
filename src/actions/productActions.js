@@ -9,7 +9,7 @@ import {
  }  from '../constants/productConstants'
 
  //Bellow is a function to get all products from backend
-export const getProdoucts = async (dispatch)=>{
+export const getProducts = () => async dispatch =>{
  try {
 
     /*firstly we will dispatch ALL_PRODUCTS_REQUEST and when we dispatch it, it's going to set loading to true,
@@ -23,6 +23,7 @@ export const getProdoucts = async (dispatch)=>{
          type:ALL_PRODUCTS_SUCCESS,
          payload:data
      })
+
  } catch (error) {
      //but if there are some error we will dispatch all products fail and then in the payload we will store the error message
      dispatch({
@@ -31,6 +32,7 @@ export const getProdoucts = async (dispatch)=>{
      })
  }
 }
+
 
 //Clear Erorrs using CLEAR_ERRORS constant
 export const clearErrors = () =>async(dispatch)=>{

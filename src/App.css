@@ -673,7 +673,7 @@ padding-left: 10px;
 
 }
 ::placeholder {
-font-size: 12px;
+font-size: 10px;
 padding-left: 10px;
 font-style: italic;
 }
@@ -717,11 +717,11 @@ height: 100%;
 }
 
 .home {
-  padding-bottom: 354px;
+  padding-bottom: 360px;
 }
 
 @media screen  and (max-width: 768px){
 .home{
-  padding-bottom: 1200px;
+  padding-bottom: 1300px;
 }
 }

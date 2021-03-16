@@ -113,14 +113,6 @@ nav {
   margin-left: 0.5rem;
 }
 
-/* Footer */
-footer {
-  margin-top: 8rem;
-  color: grey;
-  bottom: 0;
-  width: 100%;
-}
-
 /* Ratings */
 
 .rating-outer {
@@ -627,7 +619,11 @@ ul.CTAs a {
   margin-bottom: 40px;
 }
 footer {
-      color: grey;
+  position: absolute;
+  margin-top: 8rem;
+  color: grey;
+  bottom: 0; 
+  width: 100%;
 }
 footer p, a {
   font-size: 16px;

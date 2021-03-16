@@ -4,7 +4,7 @@ const Footer = () => {
     return (
         <Fragment>      
 <footer className="container-fluid bg-grey pb-2 pt-5">
-    
+    <div className="foot">
    <div className="row">
       <div className="col-md-6">
          <div className="row">
@@ -49,7 +49,7 @@ const Footer = () => {
                <div className="row ">
                   <div className="col-md-6">
                      <ul>
-                        <li> <a href="#"> Cab Faciliy</a> </li>
+                       <li> <a href="#"> Collaboration</a> </li>
                         <li> <a href="#"> Fax</a> </li>
                         <li> <a href="#"> Terms</a> </li>
                         <li> <a href="#"> Policy</a> </li>
@@ -66,6 +66,8 @@ const Footer = () => {
                <div className="social">
                   <a href="#"><i className="fa fa-facebook" aria-hidden="true"></i></a>
                   <a href="#"><i className="fa fa-instagram" aria-hidden="true"></i></a>
+                  <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
+                  <a href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                </div>
                <form className="form-footer my-3">
                   <input type="text"  placeholder="search here...." name="search"/>
@@ -75,6 +77,7 @@ const Footer = () => {
                </div>
                </div>
               </div>
+            </div>
             </div>
             <div className="text-center mt-1">Shopping Cart 2021-2020, All rights reserved</div>
             </footer>

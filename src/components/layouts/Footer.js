@@ -70,7 +70,6 @@ const Footer = () => {
                   <a href="#"><i className="fa fa-twitter" aria-hidden="true"></i></a>
                   <a href="#"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
                   <a href="#"><i className="fa fa-youtube" aria-hidden="true"></i></a>
-
                </div>
                <form className="form-footer my-3">
                   <input type="text"  placeholder="search here...." name="search"/>

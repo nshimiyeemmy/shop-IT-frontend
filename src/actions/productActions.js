@@ -18,10 +18,12 @@ export const getProducts = () => async dispatch =>{
     //and then we send request to get all products and save them in the data variable using url below
     const {data} = await axios.get('/api/v1/products')
 
+    console.log(data)
     //and after that we wil dispath all products success and we pass the data in the payload
      dispatch({
          type:ALL_PRODUCTS_SUCCESS,
-         payload:data
+         payload:{products:data.data,productsCount:data.productCount}
+
      })
 
  } catch (error) {

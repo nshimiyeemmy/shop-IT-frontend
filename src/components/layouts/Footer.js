@@ -4,7 +4,6 @@ const Footer = () => {
     return (
         <Fragment>      
 <footer className="container-fluid bg-grey py-5">
-<div className="container">
    <div className="row">
       <div className="col-md-6">
          <div className="row">
@@ -65,7 +64,7 @@ const Footer = () => {
                </div>
               </div>
             </div>
-            </div>
+            <div className="text-center mt-1">Shopping Cart 2021-2020, All rights reserved</div>
             </footer>
                     </Fragment>
                 )

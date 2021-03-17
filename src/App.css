@@ -43,7 +43,6 @@ nav {
   width: 90%;
   margin-right: 35%;
 }
-
 #search_field {
   height: 2.4rem;
   padding: 1rem;
@@ -86,11 +85,9 @@ nav {
   color: #fa9c23 !important;
   text-decoration: none;
 }
-
 .card-body {
   padding-left: 0;
 }
-
 .card-text {
   font-size: 1.4rem;
 }

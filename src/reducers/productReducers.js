@@ -23,13 +23,12 @@ export const productsReducers = (state = {products:[]}, action) =>{
                 loading:false,
                 error:action.payload
             }
-
             case CLEAR_ERRORS:
                     return{
                         ...state,
                         error:null
                     } 
                 default:
-                    return state;
+                return state;
     }
 }

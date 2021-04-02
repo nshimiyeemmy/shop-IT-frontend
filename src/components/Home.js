@@ -33,7 +33,7 @@ console.log(products,productsCount)
           <div className="card p-3 rounded">
             <img
               className="card-img-top mx-auto"
-              src="https://m.media-amazon.com/images/I/61B04f0ALWL._AC_UY218_.jpg"
+              src={product.images[0].url}
             />
             <div className="card-body d-flex flex-column">
              <h5 className="card-title">
@@ -46,13 +46,12 @@ console.log(products,productsCount)
                 <i className="fa fa-star"></i>
                 <i className="fa fa-star-half-o"></i>
                 <i className="fa fa-star-o"></i>
-                <span id="no_of_reviews">(5 Reviews)</span>
+                <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
               </div>
-              <p className="card-text">$965.67</p>
+              <p className="card-text">${product.price}</p>
               <a href="#" id="view_btn" className="btn btn-block">View Details</a>
             </div>
           </div>
-
         ))}
        </div>
     </section>
@@ -60,5 +59,4 @@ console.log(products,productsCount)
         </Fragment>
     )
 }
-
 export default Home

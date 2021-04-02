@@ -41,11 +41,10 @@ console.log(products,productsCount)
               </h5>
               </div>
               <div className="ratings mt-auto">
-               <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star"></i>
-                <i className="fa fa-star-half-o"></i>
-                <i className="fa fa-star-o"></i>
+                <div className="rating-outer">
+                  <div className="rating-inner" style={{width:`${(product.ratings / 5) * 100}%`}}>
+                  </div>
+                </div>
                 <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
               </div>
               <p className="card-text">${product.price}</p>

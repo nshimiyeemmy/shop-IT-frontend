@@ -713,11 +713,11 @@ height: 100%;
 }
 
 .home {
-  padding-bottom: 360px;
+  padding-bottom: 420px;
 }
 
 @media screen  and (max-width: 768px){
 .home{
-  padding-bottom: 1300px;
+  padding-bottom: 1400px;
 }
 }

@@ -32,10 +32,9 @@ const Header = () => {
         <span id="cart" className="ml-3">Cart</span>
         <span className="ml-1" id="cart_count">2</span>
       </div>
-    </nav> 
+    </nav>
         </Fragment>
     )
 }
 
 export default Header
-

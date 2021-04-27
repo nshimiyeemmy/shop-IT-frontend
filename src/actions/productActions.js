@@ -5,6 +5,11 @@ import {
     ALL_PRODUCTS_REQUEST,
     ALL_PRODUCTS_SUCCESS,
     ALL_PRODUCTS_FAIL,
+
+    PRODUCTS_DETAILS_REQUEST,
+    PRODUCTS_DETAILS_SUCCESS,
+    PRODUCTS_DETAILS_FAIL,
+
     CLEAR_ERRORS
  }  from '../constants/productConstants'
 
@@ -17,8 +22,6 @@ export const getProducts = () => async dispatch =>{
     dispatch({type:ALL_PRODUCTS_REQUEST});
     //and then we send request to get all products and save them in the data variable using url below
     const {data} = await axios.get('/api/v1/products')
-
-    console.log(data)
     //and after that we wil dispath all products success and we pass the data in the payload
      dispatch({
          type:ALL_PRODUCTS_SUCCESS,
@@ -28,7 +31,7 @@ export const getProducts = () => async dispatch =>{
      //but if there are some error we will dispatch all products fail and then in the payload we will store the error message
      dispatch({
          type:ALL_PRODUCTS_FAIL,
-         payload:error.message
+         payload: error.response.data.message
      })
  }
 }
@@ -38,5 +41,22 @@ export const clearErrors = () =>async(dispatch)=>{
         type:CLEAR_ERRORS
     })
 }
+
+ //Bellow is a function to get a product details from backend
+ export const getProductDetails = (id) => async dispatch =>{
+    try {
+       dispatch({type:PRODUCTS_DETAILS_REQUEST});
+       const {data} = await axios.get('/api/v1/products/${id}')
+        dispatch({
+            type:PRODUCTS_DETAILS_SUCCESS,
+            payload:{product:data.product}
+        })
+    } catch (error) {
+        dispatch({
+            type:PRODUCTS_DETAILS_FAIL,
+            payload: error.response.data.message
+        })
+    }
+   }
 
 //After doing all the above, the next is now pulling data from the state

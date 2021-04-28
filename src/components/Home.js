@@ -7,8 +7,9 @@ import {useAlert} from 'react-alert'
 import {getProducts} from '../actions/productActions'
 const Home = () => {
 
-  const alert = useAlert();
   const dispatch = useDispatch();
+  const alert = useAlert();
+
   //fetching data from the state
  const {products,loading, error, productsCount} = useSelector(state =>state.products)
   //useEffect is the hook that is going to run this component basically routes, it is the first thing to run when this component loads
@@ -27,7 +28,6 @@ if(error){
            <MetaData title={'Buy best products online'}/>
 
          <h1 id="products_heading">Latest Products</h1>
-
      <section id="products" className="container mt-5">
        <div className="row">
          {products && products.map(product => (

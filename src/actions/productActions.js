@@ -46,10 +46,10 @@ export const clearErrors = () =>async(dispatch)=>{
  export const getProductDetails = (id) => async dispatch =>{
     try {
        dispatch({type:PRODUCTS_DETAILS_REQUEST});
-       const {data} = await axios.get('/api/v1/products/${id}')
+       const {data} = await axios.get(`/api/v1/product/${id}`)
         dispatch({
             type:PRODUCTS_DETAILS_SUCCESS,
-            payload:{product:data.product}
+            payload:{product:data.data}
         })
     } catch (error) {
         dispatch({

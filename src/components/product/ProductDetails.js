@@ -20,7 +20,7 @@ const ProductDetails = ({match}) => {
             }
           },[dispatch, alert, error, match.params.id])
     return (
-        <Fragment>
+        <Fragment><MetaData title={product.name}/>
         {loading ? <Loader/> : (
             <Fragment>
             <div className="row f-flex justify-content-around">

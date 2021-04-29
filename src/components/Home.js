@@ -17,6 +17,21 @@ const Home = ({match}) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [price, setPrice] = useState([1,1000])
+  const [category, setCategory] = useState('')
+
+  const categories = [
+    'Electronics',
+    'Cameras',
+    'Laptops',
+    'Accessories',
+    'Headphones',
+    'Clothes/Shoes',
+    'Education/Books',
+    'Beauty/Health',
+    'Sports',
+    'Outdoor'
+  ]
+
   const dispatch = useDispatch();
   const alert = useAlert();
 
@@ -32,9 +47,9 @@ const Home = ({match}) => {
 if(error){
     return alert.error(error)
     }
-    dispatch(getProducts(keyword,currentPage,price));
+    dispatch(getProducts(keyword,currentPage,price,category));
 
-  },[dispatch, alert, error, keyword, currentPage,price])
+  },[dispatch, alert, error, keyword, currentPage,price,category])
 
   function setCurrentPageNo(pageNumber) {
       setCurrentPage(pageNumber)
@@ -70,16 +85,32 @@ if(error){
                      value={price}
                      onChange={price => setPrice(price)}
                     />
+                    <hr className="my-5"/>
+                    <div className="mt-5">
+                        <h4 className="mb-3">
+                            Categories
+                        </h4>
+                        <ul className="pl-0">
+                            {categories.map(category=>(
+                               <li style={{cursor:'pointer',
+                                           listStyleType:'none'}}
+                                            key={category}
+                                            onClick={() => setCategory(category)}
+                                    >
+
+                                      {category}
+
+                               </li>
+                            ))}
+                        </ul>
+                    </div>
                 </div>
             </div>
-
             <div className="col-6 col-md-9">
             <div className="row">
-                {
-                    products && products.map(product => (
-                        <Product key={product._id} product={product} col={4}/>
-                        ))
-                }
+                {products && products.map(product => (
+                 <Product key={product._id} product={product} col={4}/>
+                ))}
             </div>
             </div>
          </Fragment>
@@ -87,7 +118,7 @@ if(error){
      ):(
         products && products.map(product => (
             <Product key={product._id} product={product} col={3}/>
-            ))
+                ))
      )}
         </div>
      </section>

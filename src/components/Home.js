@@ -42,7 +42,9 @@ if(error){
          ))}
         </div>
      </section>
-<div className="d-flex justify-content-center mt-5">
+
+     {resPerPage <= productsCount && (
+        <div className="d-flex justify-content-center mt-5">
     <Pagination
     activePage={currentPage}
     itemsCountPerPage={resPerPage}
@@ -55,9 +57,8 @@ if(error){
     itemClass="page-item"
     linkClass="page-link"
     />
-
-
 </div>
+ )}
 
          </Fragment>
         )}

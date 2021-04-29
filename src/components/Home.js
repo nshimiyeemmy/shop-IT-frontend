@@ -1,4 +1,5 @@
-import React, { Fragment, useEffect } from 'react'
+import React, { Fragment,useState ,useEffect } from 'react'
+import Pagination from 'react-js-pagination'
 import MetaData from './layouts/MetaData'
 import Product from './product/Product'
 import Loader from './layouts/Loader'
@@ -7,11 +8,12 @@ import {useAlert} from 'react-alert'
 import {getProducts} from '../actions/productActions'
 const Home = () => {
 
+  const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
   const alert = useAlert();
 
   //fetching data from the state
- const {products,loading, error, productsCount} = useSelector(state =>state.products)
+ const {products,loading, error, productsCount, resPerPage} = useSelector(state =>state.products)
   //useEffect is the hook that is going to run this component basically routes, it is the first thing to run when this component loads
   //It's much like a constructor of the class
   useEffect(() => {
@@ -19,8 +21,13 @@ const Home = () => {
 if(error){
     return alert.error(error)
     }
-    dispatch(getProducts());
-  },[dispatch, alert, error])
+    dispatch(getProducts(currentPage));
+
+  },[dispatch, alert, error, currentPage])
+
+  function setCurrentPageNo(pageNumber) {
+      setCurrentPage(pageNumber)
+  }
     return (
       <Fragment>
         {loading ? <Loader/>:(
@@ -35,6 +42,22 @@ if(error){
          ))}
         </div>
      </section>
+<div className="d-flex justify-content-center mt-5">
+    <Pagination
+    activePage={currentPage}
+    itemsCountPerPage={resPerPage}
+    totalItemsCount={productsCount}
+    onChange={setCurrentPageNo}
+    nextPageText={`Next`}
+    prevPageText={`Prev`}
+    firstPageText={`First`}
+    lastPageText={`Last`}
+    itemClass="page-item"
+    linkClass="page-link"
+    />
+
+
+</div>
 
          </Fragment>
         )}

@@ -14,18 +14,18 @@ import {
  }  from '../constants/productConstants'
 
  //Bellow is a function to get all products from backend
-export const getProducts = () => async dispatch =>{
+export const getProducts = (currentPage=1) => async dispatch =>{
  try {
 
     /*firstly we will dispatch ALL_PRODUCTS_REQUEST and when we dispatch it, it's going to set loading to true,
      and set products to and empty array in the state*/
     dispatch({type:ALL_PRODUCTS_REQUEST});
-    //and then we send request to get all products and save them in the data variable using url below
-    const {data} = await axios.get('/api/v1/products')
+    //and then we send request to  get all products and save them in the data variable using url below
+    const {data} = await axios.get(`/api/v1/products?page=${currentPage}`)
     //and after that we wil dispath all products success and we pass the data in the payload
      dispatch({
          type:ALL_PRODUCTS_SUCCESS,
-         payload:{products:data.data,productsCount:data.productCount}
+         payload:{products:data.data,productsCount:data.productCount,resPerPage:data.resPerPage}
      })
  } catch (error) {
      //but if there are some error we will dispatch all products fail and then in the payload we will store the error message

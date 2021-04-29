@@ -31,7 +31,7 @@ export const getProducts = (currentPage=1) => async dispatch =>{
      //but if there are some error we will dispatch all products fail and then in the payload we will store the error message
      dispatch({
          type:ALL_PRODUCTS_FAIL,
-         payload: error.response.data.message
+         payload: error
      })
  }
 }
@@ -54,7 +54,7 @@ export const clearErrors = () =>async(dispatch)=>{
     } catch (error) {
         dispatch({
             type:PRODUCTS_DETAILS_FAIL,
-            payload: error.response.data.message
+            payload: error
         })
     }
    }

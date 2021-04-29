@@ -14,7 +14,7 @@ import {
  }  from '../constants/productConstants'
 
  //Bellow is a function to get all products from backend
-export const getProducts = (keyword = '', currentPage=1 , price) => async dispatch =>{
+export const getProducts = (keyword = '', currentPage=1 , price, category) => async dispatch =>{
  try {
 
     /*firstly we will dispatch ALL_PRODUCTS_REQUEST and when we dispatch it, it's going to set loading to true,
@@ -23,6 +23,11 @@ export const getProducts = (keyword = '', currentPage=1 , price) => async dispat
     //and then we send request to  get all products and save them in the data variable using url below
 
     let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}`
+
+    if(category){
+        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category}`
+    }
+
     const {data} = await axios.get(link)
     //and after that we wil dispath all products success and we pass the data in the payload
      dispatch({
@@ -33,7 +38,7 @@ export const getProducts = (keyword = '', currentPage=1 , price) => async dispat
      //but if there are some error we will dispatch all products fail and then in the payload we will store the error message
      dispatch({
          type:ALL_PRODUCTS_FAIL,
-         payload: error
+         payload: error.message
      })
  }
 }
@@ -56,7 +61,7 @@ export const clearErrors = () =>async(dispatch)=>{
     } catch (error) {
         dispatch({
             type:PRODUCTS_DETAILS_FAIL,
-            payload: error.response.message
+            payload: error.message
         })
     }
    }

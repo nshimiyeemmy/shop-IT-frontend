@@ -6,7 +6,7 @@ import Loader from './layouts/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import {useAlert} from 'react-alert'
 import {getProducts} from '../actions/productActions'
-const Home = () => {
+const Home = ({match}) => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const dispatch = useDispatch();
@@ -14,16 +14,19 @@ const Home = () => {
 
   //fetching data from the state
  const {products,loading, error, productsCount, resPerPage} = useSelector(state =>state.products)
-  //useEffect is the hook that is going to run this component basically routes, it is the first thing to run when this component loads
+
+ const keyword = match.params.keyword;
+
+ //useEffect is the hook that is going to run this component basically routes, it is the first thing to run when this component loads
   //It's much like a constructor of the class
   useEffect(() => {
 //so inside here we have to call our function
 if(error){
     return alert.error(error)
     }
-    dispatch(getProducts(currentPage));
+    dispatch(getProducts(keyword,currentPage));
 
-  },[dispatch, alert, error, currentPage])
+  },[dispatch, alert, error, keyword, currentPage])
 
   function setCurrentPageNo(pageNumber) {
       setCurrentPage(pageNumber)

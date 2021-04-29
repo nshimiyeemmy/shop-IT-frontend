@@ -19,19 +19,20 @@ const ProductDetails = ({match}) => {
             dispatch(clearErrors())
             }
           },[dispatch, alert, error, match.params.id])
+
     return (
         <Fragment><MetaData title={product.name}/>
         {loading ? <Loader/> : (
             <Fragment>
-            <div className="row f-flex justify-content-around">
+        <div className="row f-flex justify-content-around">
         <div className="col-12 col-lg-5 img-fluid" id="product_image">
-
          <Carousel pause='hover'>
             {product.images && product.images.map(image=>(
                 <Carousel.Item key={image.public_id}>
                     <img src={image.url} className="d-block w-100" alt={product.title}/>
                 </Carousel.Item>
             ))}
+
         </Carousel>
         </div>
 
@@ -57,7 +58,7 @@ const ProductDetails = ({match}) => {
 
             <hr/>
 
-            <p>Status: <span id="stock_status" className={ product.quantity > 0 ? `greenColor` : `redColor`}>{product.quantity>0 ? `Available In S-tock` : `Out of Stock`}</span></p>
+            <p>Status: <span id="stock_status" className={ product.quantity > 0 ? `greenColor` : `redColor`}>{product.quantity>0 ? `Available In Stock` : `Out of Stock`}</span></p>
 
             <hr/>
 
@@ -65,7 +66,6 @@ const ProductDetails = ({match}) => {
             <p>{product.description}</p>
             <hr/>
             <p id="product_seller mb-3">Manufactured by: <strong>{product.manufacturer}</strong></p>
-
             <button id="review_btn" type="button" className="btn btn-primary mt-4" data-toggle="modal" data-target="#ratingModal">
                         Submit Your Review
             </button>

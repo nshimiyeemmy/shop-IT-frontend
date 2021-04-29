@@ -21,7 +21,7 @@ const searchHandler = (e)=>{
             type="text"
             id="s+earch_field"
             className="form-control"
-            placeholder="Enter Product Name ..."
+            placeholder="Search Products here ..."
             onChange ={ (e) =>setKeyword(e.target.value)
 
             }

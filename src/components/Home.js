@@ -16,8 +16,9 @@ const Range = createSliderWithTooltip(Slider.Range)
 const Home = ({match}) => {
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [price, setPrice] = useState([1,1000])
-  const [category, setCategory] = useState('')
+  const [price, setPrice] = useState([1,1000]);
+  const [category, setCategory] = useState('');
+  const [rating, setRating] = useState(0);
 
   const categories = [
     'Electronics',
@@ -25,18 +26,22 @@ const Home = ({match}) => {
     'Laptops',
     'Accessories',
     'Headphones',
-    'Clothes/Shoes',
-    'Education/Books',
-    'Beauty/Health',
+    'Clothes',
+    'Education',
+    'Beauty',
     'Sports',
-    'Outdoor'
+    'Outdoor',
+    'Shoes',
+    'Health',
+    'Shirts',
+    'Skirts'
   ]
 
   const dispatch = useDispatch();
   const alert = useAlert();
 
   //fetching data from the state
- const {products,loading, error, productsCount, resPerPage} = useSelector(state =>state.products)
+ const {products,loading, error, productsCount, resPerPage,FilteredProductsCount} = useSelector(state =>state.products)
 
  const keyword = match.params.keyword;
 
@@ -47,12 +52,18 @@ const Home = ({match}) => {
 if(error){
     return alert.error(error)
     }
-    dispatch(getProducts(keyword,currentPage,price,category));
+    dispatch(getProducts(keyword,currentPage,price,category,rating));
 
-  },[dispatch, alert, error, keyword, currentPage,price,category])
+  },[dispatch, alert, error, keyword, currentPage,price,category,rating])
 
   function setCurrentPageNo(pageNumber) {
       setCurrentPage(pageNumber)
+  }
+
+  //count productsperPage even during a search
+  let count =  productsCount;
+  if(keyword){
+      count = FilteredProductsCount
   }
     return (
       <Fragment>
@@ -93,7 +104,7 @@ if(error){
                         <ul className="pl-0">
                             {categories.map(category=>(
                                <li style={{cursor:'pointer',
-                                           listStyleType:'none'}}
+                                           listStyleType:'square'}}
                                             key={category}
                                             onClick={() => setCategory(category)}
                                     >
@@ -104,6 +115,37 @@ if(error){
                             ))}
                         </ul>
                     </div>
+
+
+                    <hr className="my-3"/>
+                    <div className="mt-5">
+                        <h4 className="mb-3">
+                            Ratings
+                        </h4>
+                        <ul className="pl-0">
+                            {[5,4,3,2,1].map(star=>(
+                               <li style={{cursor:'pointer',
+                                           listStyleType:'none'}}
+                                            key={star}
+                                            onClick={() => setRating(star)}
+                                    >
+
+                                     <div className="rating-outer">
+                                    <div className="rating-inner"
+                                    style={{
+                                        width:`${star * 20}%`
+                                    }}
+                                    >
+                                    </div>
+                                     </div>
+
+                               </li>
+                            ))}
+                        </ul>
+                    </div>
+
+
+
                 </div>
             </div>
             <div className="col-6 col-md-9">
@@ -123,7 +165,7 @@ if(error){
         </div>
      </section>
 
-     {resPerPage <= productsCount && (
+     {resPerPage <= count && (
         <div className="d-flex justify-content-center mt-5">
     <Pagination
     activePage={currentPage}

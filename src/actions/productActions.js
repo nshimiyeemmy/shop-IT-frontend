@@ -14,7 +14,7 @@ import {
  }  from '../constants/productConstants'
 
  //Bellow is a function to get all products from backend
-export const getProducts = (keyword = '', currentPage=1 , price, category) => async dispatch =>{
+export const getProducts = (keyword = '', currentPage=1 , price, category, rating=0) => async dispatch =>{
  try {
 
     /*firstly we will dispatch ALL_PRODUCTS_REQUEST and when we dispatch it, it's going to set loading to true,
@@ -22,10 +22,10 @@ export const getProducts = (keyword = '', currentPage=1 , price, category) => as
     dispatch({type:ALL_PRODUCTS_REQUEST});
     //and then we send request to  get all products and save them in the data variable using url below
 
-    let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}`
+    let link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&ratings[gte]=${rating}`
 
     if(category){
-        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category}`
+        link = `/api/v1/products?keyword=${keyword}&page=${currentPage}&price[lte]=${price[1]}&price[gte]=${price[0]}&category=${category}&ratings[gte]=${rating}`
     }
 
     const {data} = await axios.get(link)

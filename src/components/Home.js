@@ -1,6 +1,6 @@
 import React, { Fragment,useState ,useEffect } from 'react'
 import Pagination from 'react-js-pagination'
-import Slider from 'rc-slider'
+import Slider from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import MetaData from './layouts/MetaData'
 import Product from './product/Product'
@@ -76,8 +76,9 @@ if(error){
        <div className="row">
 
      {keyword ? (
-
          <Fragment>
+
+            {/* implimenting filter by price */}
             <div className="col-6 col-md-3 mt-5 mb-5">
                 <div className="px-5">
                     <Range
@@ -97,6 +98,8 @@ if(error){
                      onChange={price => setPrice(price)}
                     />
                     <hr className="my-5"/>
+
+                    {/* implimenting filter by category */}
                     <div className="mt-5">
                         <h4 className="mb-3">
                             Categories
@@ -116,7 +119,7 @@ if(error){
                         </ul>
                     </div>
 
-
+                   {/* implimenting filter by star rating */}
                     <hr className="my-3"/>
                     <div className="mt-5">
                         <h4 className="mb-3">
@@ -143,8 +146,6 @@ if(error){
                             ))}
                         </ul>
                     </div>
-
-
 
                 </div>
             </div>

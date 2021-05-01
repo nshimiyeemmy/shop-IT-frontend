@@ -1,6 +1,6 @@
 import React, {Fragment, useEffect} from 'react'
-import Loader from '../layouts/Loader'
 import { Carousel } from "react-bootstrap";
+import Loader from '../layouts/Loader'
 import MetaData from '../layouts/MetaData'
 import { useDispatch, useSelector } from 'react-redux'
 import {useAlert} from 'react-alert'

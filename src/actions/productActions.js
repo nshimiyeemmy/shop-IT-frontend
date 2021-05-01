@@ -48,7 +48,6 @@ export const clearErrors = () =>async(dispatch)=>{
         type:CLEAR_ERRORS
     })
 }
-
  //Bellow is a function to get a product details from backend
  export const getProductDetails = (id) => async dispatch =>{
     try {

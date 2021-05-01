@@ -22,9 +22,7 @@ const searchHandler = (e)=>{
             id="s+earch_field"
             className="form-control"
             placeholder="Search Products here ..."
-            onChange ={ (e) =>setKeyword(e.target.value)
-
-            }
+            onChange ={ (e) =>setKeyword(e.target.value)}
           />
           <div className="input-group-append">
             <button id="search_btn" className="btn">

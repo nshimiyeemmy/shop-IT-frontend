@@ -30,5 +30,10 @@ export const login = (email,password) => async dispatch =>{
             payload:error.response.data.message
         })
     }
-
 }
+    //Clear Erorrs using CLEAR_ERRORS constant
+    export const clearErrors = () =>async(dispatch)=>{
+        dispatch({
+            type:CLEAR_ERRORS
+        })
+    }

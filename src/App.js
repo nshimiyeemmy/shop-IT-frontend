@@ -11,7 +11,7 @@ import store from './store';
 
 function App() {
   useEffect(() => {
-    store.dispatch(loadUser);
+    store.dispatch(loadUser());
   }, []);
   return (
     <Router>

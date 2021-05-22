@@ -1,20 +1,28 @@
 import React, { Fragment } from 'react';
 import { Route, Link } from 'react-router-dom';
-import Search from '../layouts/Search';
-import '../../App.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
+import { logoutUser } from '../../actions/userActions';
+import Search from '../layouts/Search';
+import '../../App.css';
+
 const Header = () => {
   const alert = useAlert();
   const dispatch = useDispatch();
   const { user, loading } = useSelector((state) => state.auth);
+
+  //   creating the logout Handler function
+  const logoutHandler = () => {
+    dispatch(logoutUser());
+    alert.success('Logged out successfully');
+  };
   return (
     <Fragment>
       <nav className="navbar row">
         <div className="col-12 col-md-3">
           <div className="navbar-brand">
             <Link to="/">
-              <img src="./images/logo.png" />
+              <img src="./images/logo.png" alt="logo" />
             </Link>
           </div>
         </div>
@@ -41,7 +49,7 @@ const Header = () => {
                 type="button"
                 id="dropDownMenuButton"
                 data-toggle="dropdown"
-                aria-aria-haspopup="true"
+                aria-haspopup="true"
                 aria-expanded="false"
               >
                 <figure className="avatar avatar-nav">
@@ -57,7 +65,7 @@ const Header = () => {
                 className="dropdown-menu"
                 aria-labelledby="dropDownMenuButton"
               >
-                {user && user.role != 'admin' ? (
+                {user && user.role !== 'admin' ? (
                   <Link className="dropdown-item" to="/orders/me">
                     Orders
                   </Link>
@@ -69,7 +77,11 @@ const Header = () => {
                 <Link className="dropdown-item text-danger" to="/me">
                   Profile
                 </Link>
-                <Link className="dropdown-item text-danger" to="/">
+                <Link
+                  className="dropdown-item text-danger"
+                  to="/"
+                  onClick={logoutHandler}
+                >
                   Logout
                 </Link>
               </div>

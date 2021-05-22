@@ -9,6 +9,8 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  LOGOUT_SUCCESS,
+  LOGOUT_FAIL,
   CLEAR_ERRORS,
 } from '../constants/userConstants';
 
@@ -24,7 +26,7 @@ export const login = (email, password) => async (dispatch) => {
     const data = await axios.post(`/api/v1/login`, { email, password }, config);
     dispatch({
       type: LOGIN_SUCCESS,
-      payload: data.data,
+      payload: data.data.user,
     });
   } catch (error) {
     dispatch({
@@ -46,7 +48,7 @@ export const register = (userData) => async (dispatch) => {
     const { data } = await axios.post(`/api/v1/register`, userData, config);
     dispatch({
       type: REGISTER_USER_SUCCESS,
-      payload: data.data,
+      payload: data.data.user,
     });
   } catch (error) {
     dispatch({
@@ -68,6 +70,20 @@ export const loadUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOAD_USER_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+//logout user action
+export const logoutUser = () => async (dispatch) => {
+  try {
+    await axios.get(`/api/v1/logout`);
+    dispatch({
+      type: LOGOUT_SUCCESS,
+    });
+  } catch (error) {
+    dispatch({
+      type: LOGOUT_FAIL,
       payload: error.response.data.message,
     });
   }

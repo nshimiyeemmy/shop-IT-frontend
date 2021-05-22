@@ -8,6 +8,10 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  UPDATED_PROFILE_REQUEST,
+  UPDATED_PROFILE_SUCCESS,
+  UPDATED_PROFILE_FAIL,
+  UPDATED_PROFILE_RESET,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   CLEAR_ERRORS,
@@ -65,6 +69,36 @@ export const authReducer = (state = { user: [] }, action) => {
         error: null,
       };
 
+    default:
+      return state;
+  }
+};
+
+export const userReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATED_PROFILE_REQUEST:
+      return {
+        ...state,
+        loading: true,
+      };
+    case UPDATED_PROFILE_SUCCESS:
+      return {
+        ...state,
+        loading: false,
+        isUpdated: action.payload,
+      };
+    case UPDATED_PROFILE_RESET:
+      return {
+        ...state,
+        loading: false,
+        isUpdated: false,
+      };
+    case UPDATED_PROFILE_FAIL:
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
     default:
       return state;
   }

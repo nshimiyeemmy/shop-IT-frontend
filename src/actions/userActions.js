@@ -9,6 +9,10 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  UPDATED_PROFILE_REQUEST,
+  UPDATED_PROFILE_SUCCESS,
+  UPDATED_PROFILE_FAIL,
+  UPDATED_PROFILE_RESET,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   CLEAR_ERRORS,
@@ -48,7 +52,7 @@ export const register = (userData) => async (dispatch) => {
     const { data } = await axios.post(`/api/v1/register`, userData, config);
     dispatch({
       type: REGISTER_USER_SUCCESS,
-      payload: data.user,
+      payload: data.data.user,
     });
   } catch (error) {
     dispatch({
@@ -74,6 +78,29 @@ export const loadUser = () => async (dispatch) => {
     });
   }
 };
+
+//updated the user profile
+export const updateProfile = (userData) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATED_PROFILE_REQUEST });
+    const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    };
+    const { data } = await axios.put(`/api/v1/me/update`, userData, config);
+    dispatch({
+      type: UPDATED_PROFILE_SUCCESS,
+      payload: data.success,
+    });
+  } catch (error) {
+    dispatch({
+      type: UPDATED_PROFILE_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
 //logout user action
 export const logoutUser = () => async (dispatch) => {
   try {

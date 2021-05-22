@@ -9,6 +9,8 @@ import Register from './components/user/Register';
 import Profile from './components/user/Profile';
 import { loadUser } from './actions/userActions';
 import store from './store';
+import ProtectedRoute from './components/route/ProtectedRoute';
+import updateProfile from './components/user/UpdatedProfile';
 
 function App() {
   useEffect(() => {
@@ -24,7 +26,8 @@ function App() {
           <Route path="/product/:id" component={productDetails} exact />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
-          <Route path="/me" component={Profile} exact />
+          <ProtectedRoute path="/me" component={Profile} exact />
+          <ProtectedRoute path="/me/update" component={updateProfile} exact />
         </div>
         <Footer />
       </div>

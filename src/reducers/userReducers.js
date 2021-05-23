@@ -12,6 +12,10 @@ import {
   UPDATED_PROFILE_SUCCESS,
   UPDATED_PROFILE_FAIL,
   UPDATED_PROFILE_RESET,
+  UPDATED_PASSWORD_REQUEST,
+  UPDATED_PASSWORD_SUCCESS,
+  UPDATED_PASSWORD_RESET,
+  UPDATED_PASSWORD_FAIL,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   CLEAR_ERRORS,
@@ -73,32 +77,42 @@ export const authReducer = (state = { user: [] }, action) => {
       return state;
   }
 };
-
+//user reducer function
 export const userReducer = (state = {}, action) => {
   switch (action.type) {
     case UPDATED_PROFILE_REQUEST:
+    case UPDATED_PASSWORD_REQUEST:
       return {
         ...state,
         loading: true,
       };
     case UPDATED_PROFILE_SUCCESS:
+    case UPDATED_PASSWORD_SUCCESS:
       return {
         ...state,
         loading: false,
         isUpdated: action.payload,
       };
     case UPDATED_PROFILE_RESET:
+    case UPDATED_PASSWORD_RESET:
       return {
         ...state,
         loading: false,
         isUpdated: false,
       };
     case UPDATED_PROFILE_FAIL:
+    case UPDATED_PASSWORD_FAIL:
       return {
         ...state,
         loading: false,
         error: action.payload,
       };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+
     default:
       return state;
   }

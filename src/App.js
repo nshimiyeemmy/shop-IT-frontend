@@ -11,6 +11,7 @@ import { loadUser } from './actions/userActions';
 import store from './store';
 import ProtectedRoute from './components/route/ProtectedRoute';
 import updateProfile from './components/user/UpdatedProfile';
+import updatePassword from './components/user/UpdatePassword';
 
 function App() {
   useEffect(() => {
@@ -28,6 +29,8 @@ function App() {
           <Route path="/register" component={Register} />
           <ProtectedRoute path="/me" component={Profile} exact />
           <ProtectedRoute path="/me/update" component={updateProfile} exact />
+          <ProtectedRoute path="/password/update" component={updatePassword} exact />
+
         </div>
         <Footer />
       </div>

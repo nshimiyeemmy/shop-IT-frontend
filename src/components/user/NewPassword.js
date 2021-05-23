@@ -6,12 +6,12 @@ import { resetPassword, clearErrors } from '../../actions/userActions';
 
 const NewPassword = ({ history, match }) => {
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [comfirmPassword, setComfirmPassword] = useState('');
   const alert = useAlert();
   const dispatch = useDispatch();
 
   const { error, success, loading } = useSelector(
-    (state) => state.resetPassword
+    (state) => state.forgotPassword
   );
   useEffect(() => {
     if (error) {
@@ -29,7 +29,7 @@ const NewPassword = ({ history, match }) => {
     e.preventDefault();
     const formData = new FormData();
     formData.append('password', password);
-    formData.append('confirmPassword', confirmPassword);
+    formData.append('comfirmPassword', comfirmPassword);
     dispatch(resetPassword(match.params.token, formData));
   };
   return (
@@ -57,8 +57,8 @@ const NewPassword = ({ history, match }) => {
                 type="password"
                 id="confirm_password_field"
                 className="form-control"
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={comfirmPassword}
+                onChange={(e) => setComfirmPassword(e.target.value)}
               />
             </div>
 
@@ -66,6 +66,7 @@ const NewPassword = ({ history, match }) => {
               id="new_password_button"
               type="submit"
               className="btn btn-block py-3"
+              disabled={loading ? true : false}
             >
               Set Password
             </button>

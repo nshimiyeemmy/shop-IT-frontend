@@ -15,6 +15,9 @@ import {
   UPDATED_PASSWORD_REQUEST,
   UPDATED_PASSWORD_SUCCESS,
   UPDATED_PASSWORD_FAIL,
+  FORGOT_PASSWORD_REQUEST,
+  FORGOT_PASSWORD_SUCCESS,
+  FORGOT_PASSWORD_FAIL,
   LOGOUT_SUCCESS,
   LOGOUT_FAIL,
   CLEAR_ERRORS,
@@ -124,6 +127,28 @@ export const updatePassword = (passwords) => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: UPDATED_PASSWORD_FAIL,
+      payload: error.response.data.message,
+    });
+  }
+};
+
+//forgot my password reducer
+export const forgotPassword = (email) => async (dispatch) => {
+  try {
+    dispatch({ type: FORGOT_PASSWORD_REQUEST });
+    const config = {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    };
+    const { data } = await axios.post(`/api/v1/password/forgot`, email, config);
+    dispatch({
+      type: FORGOT_PASSWORD_SUCCESS,
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: FORGOT_PASSWORD_FAIL,
       payload: error.response.data.message,
     });
   }

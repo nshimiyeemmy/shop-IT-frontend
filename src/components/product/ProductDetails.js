@@ -56,7 +56,7 @@ const ProductDetails = ({ match }) => {
               </div>
               <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
               <hr />
-              <p id="product_price">{product.price}</p>
+              <p id="product_price">${product.price}</p>
               <div className="stockCounter d-inline">
                 <span className="btn btn-danger minus">-</span>
                 <input

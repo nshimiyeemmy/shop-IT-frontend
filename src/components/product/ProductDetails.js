@@ -78,13 +78,21 @@ const ProductDetails = ({ match }) => {
                 >
                   -
                 </span>
-                <input
-                  type="number"
-                  className="form-control count d-inline"
-                //   value={product.quantity == 0 ? quantity : (quantity = 0)}
-                  value={quantity}
-                  readOnly
-                />
+                {product.quantity == 0 ? (
+                  <input
+                    type="number"
+                    className="form-control count d-inline"
+                    value="0"
+                    readOnly
+                  />
+                ) : (
+                  <input
+                    type="number"
+                    className="form-control count d-inline"
+                    value={quantity}
+                    readOnly
+                  />
+                )}
                 <span
                   className="btn btn-primary plus"
                   onClick={increaseQuantity}

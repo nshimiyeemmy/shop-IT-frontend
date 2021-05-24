@@ -23,7 +23,6 @@ const NewPassword = ({ history, match }) => {
       history.push('/login');
     }
   }, [dispatch, alert, error, success, history]);
-
   //creating the submitHandler to handle the email and password submit
   const submitHandler = (e) => {
     e.preventDefault();

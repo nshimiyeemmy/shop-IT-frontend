@@ -19,7 +19,7 @@ const searchHandler = (e)=>{
       <div className="input-group">
           <input
             type="text"
-            id="s+earch_field"
+            id="search_field"
             className="form-control"
             placeholder="Search Products here ..."
             onChange ={ (e) =>setKeyword(e.target.value)}

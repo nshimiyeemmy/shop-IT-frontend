@@ -30,10 +30,14 @@ const Cart = () => {
     <Fragment>
       <MetaData title={'Your Cart'} />
       {cartItems.length === 0 ? (
-          <div>
-        <h2 className="mt-5 text-center">You Cart Looks empty!</h2>
-        <hr/>
-        <h5 className="text-center">You have not purchased any product yet,<br/>Please try purchasing Products..</h5>
+        <div>
+          <h2 className="mt-5 text-center">You Cart Looks empty!</h2>
+          <hr />
+          <h5 className="text-center">
+            You have not purchased any product yet,
+            <br />
+            Please try purchasing Products..
+          </h5>
         </div>
       ) : (
         <Fragment>
@@ -42,13 +46,15 @@ const Cart = () => {
           </h3>
           <div className="row d-flex justify-content-between mb-0 mt-3">
             <div className="col-12 col-lg-8">
-            <div className="row flex justify-content-between" id="head">
-            <h5 className="pl-5">Image</h5>
-            <h5 className="pl-5">Name</h5>
-            <h5 className="pl-5" id="price">Price</h5>
-            <h5 className="pl-5">Quantity</h5>
-            <h5 className="pl-5">Delete</h5>
-          </div>
+              <div className="row flex justify-content-between" id="head">
+                <h5 className="pl-5">Image</h5>
+                <h5 className="pl-5">Name</h5>
+                <h5 className="pl-5" id="price">
+                  Price
+                </h5>
+                <h5 className="pl-5">Quantity</h5>
+                <h5 className="pl-5">Delete</h5>
+              </div>
               {cartItems.map((item) => (
                 <Fragment>
                   <hr />
@@ -68,7 +74,9 @@ const Cart = () => {
                         </Link>
                       </div>
                       <div className="col-4 col-lg-2 mt-4 mt-lg-1">
-                        <Link id="card_item_price">${item.price}</Link>
+                        <Link id="card_item_price">
+                          ${(item.cartQuantity * item.price).toFixed(2)}
+                        </Link>
                       </div>
 
                       <div className="col-4 col-lg-3 mt-4 mt-lg-0">
@@ -123,11 +131,25 @@ const Cart = () => {
                 <hr />
                 <p>
                   Subtotal:{' '}
-                  <span className="order-summary-values">3 (Units)</span>
+                  <span className="order-summary-values">
+                    {cartItems.reduce(
+                      (acc, item) => acc + Number(item.cartQuantity),
+                      0
+                    )}{' '}
+                    (Units)
+                  </span>
                 </p>
                 <p>
                   Est. total:{' '}
-                  <span className="order-summary-values">$765.56</span>
+                  <span className="order-summary-values">
+                    $
+                    {cartItems
+                      .reduce(
+                        (acc, item) => acc + item.cartQuantity * item.price,
+                        0
+                      )
+                      .toFixed(2)}
+                  </span>
                 </p>
 
                 <hr />

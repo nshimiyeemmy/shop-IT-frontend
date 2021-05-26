@@ -12,6 +12,7 @@ import {
   userReducer,
   forgotPasswordReducer,
 } from './reducers/userReducers';
+import { cartReducer } from './reducers/cartReducer';
 //creating reducers for every resource such as users, products
 const reducer = combineReducers({
   products: productsReducers,
@@ -19,9 +20,16 @@ const reducer = combineReducers({
   auth: authReducer,
   user: userReducer,
   forgotPassword: forgotPasswordReducer,
+  cart: cartReducer,
 });
 //this inital state contains all the data that we want to put in the state just before loading the application
-let initialState = {};
+let initialState = {
+  cart: {
+    cartItems: localStorage.getItem('cartItems')
+      ? JSON.parse(localStorage.getItem('cartItems'))
+      : [],
+  },
+};
 
 //contains all the middleware that we want to use
 const middleware = [thunk];

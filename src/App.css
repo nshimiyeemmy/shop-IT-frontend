@@ -25,7 +25,7 @@ body {
   border-radius: 5px;
 }
 
-.App{
+.App {
   position: relative;
   min-height: 100vh;
 }
@@ -209,7 +209,12 @@ nav {
   margin: 1.8rem 0rem;
   padding: 0rem 0.7rem;
 }
-
+#head{
+    color:grey
+}
+#price{
+    padding-left:95px !important;
+}
 .cart-item a {
   color: grey;
 }
@@ -448,7 +453,6 @@ nav {
 .update-btn:hover {
   color: white;
 }
-
 /* Pagination */
 .page-item.active .page-link {
   background-color: #fa9c23;
@@ -462,7 +466,6 @@ nav {
 .page-link:hover {
   color: #fa9c23;
 }
-
 /* Admin Sidebar */
 
 .sidebar-wrapper {
@@ -608,108 +611,106 @@ footer {
   bottom: 0 !important;
   left: 0;
   width: 100%;
-  background-color:#232f3e !important;
+  background-color: #232f3e !important;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-footer .foot{
-  margin:10px;
+footer .foot {
+  margin: 10px;
 }
 .logo-footer {
   margin-bottom: 30px;
 }
 
-footer p, a {
+footer p,
+a {
   font-size: 16px;
-font-family: 'Amazon Ember';
+  font-family: 'Amazon Ember';
 }
 footer h5 {
-color:white;
-font-family: 'Amazon Ember';
-margin-bottom: 40px;
-position: relative;
+  color: white;
+  font-family: 'Amazon Ember';
+  margin-bottom: 40px;
+  position: relative;
 }
 footer h5:after {
-position: absolute;
-content: "";
-background: grey;
-width: 12%;
-height: 1px;
-left: 0;
-bottom: -20px;
+  position: absolute;
+  content: '';
+  background: grey;
+  width: 12%;
+  height: 1px;
+  left: 0;
+  bottom: -20px;
 }
 .btn-footer {
-           color: grey;
+  color: grey;
 
-          text-decoration: none;
-          border: 1px solid;
-          border-radius: 43px;
-          font-size: 13px;
-          padding: 7px 30px;
-          line-height: 47px;
+  text-decoration: none;
+  border: 1px solid;
+  border-radius: 43px;
+  font-size: 13px;
+  padding: 7px 30px;
+  line-height: 47px;
 }
 .btn-footer:hover {
- text-decoration: none;
-
+  text-decoration: none;
 }
-.form-footer input[type="text"] {
-border: none;
-border-radius: 16px 0 0 16px;
-outline: none;
-padding-left: 10px;
-
+.form-footer input[type='text'] {
+  border: none;
+  border-radius: 16px 0 0 16px;
+  outline: none;
+  padding-left: 10px;
 }
 ::placeholder {
-font-size: 13.7px;
-padding-left: 2px;
-font-style: initial;
+  font-size: 13.7px;
+  padding-left: 2px;
+  font-style: initial;
 }
-.form-footer input[type="button"] {
-border: none;
-background:#232323;
+.form-footer input[type='button'] {
+  border: none;
+  background: #232323;
   margin-left: -5px;
-color: #fff;
-outline: none;
-border-radius: 0 16px 16px 0;
-padding: 2px 12px;
+  color: #fff;
+  outline: none;
+  border-radius: 0 16px 16px 0;
+  padding: 2px 12px;
 }
 .social .fa {
-color: grey;
-font-size: 22px;
-padding: 10px 15px;
+  color: grey;
+  font-size: 22px;
+  padding: 10px 15px;
 }
-.social .fa:hover{
+.social .fa:hover {
   color: #f5f5f5 !important;
 }
 footer ul li {
-list-style: none;
-display: block;
+  list-style: none;
+  display: block;
 }
-footer ul  {
-padding-left: 0;
+footer ul {
+  padding-left: 0;
 }
-footer ul  li a{
-text-decoration: none;
-color: grey;
-text-decoration:none;
+footer ul li a {
+  text-decoration: none;
+  color: grey;
+  text-decoration: none;
 }
 a:hover {
-text-decoration: none;
-color: #f5f5f5 !important;
-
+  text-decoration: none;
+  color: #f5f5f5 !important;
 }
 .logo-part {
-border-right: 1px solid grey;
-height: 100%;
+  border-right: 1px solid grey;
+  height: 100%;
 }
 
 .home {
   padding-bottom: 420px;
 }
 
-@media screen  and (max-width: 768px){
-.home{
-  padding-bottom: 1400px;
-}
+@media screen and (max-width: 768px) {
+  .home {
+    padding-bottom: 1400px;
+  }
 }

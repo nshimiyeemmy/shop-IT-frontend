@@ -1,5 +1,4 @@
 //contains the codes to connect to the extension {react-redux}
-
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
@@ -28,7 +27,8 @@ let initialState = {
     cartItems: localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems'))
       : [],
-  },
+    shippingInfo:localStorage.getItem('shippingInfo')? JSON.parse(localStorage.getItem('shippingInfo')):{}
+  }
 };
 
 //contains all the middleware that we want to use
@@ -36,7 +36,7 @@ const middleware = [thunk];
 const store = createStore(
   reducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middleware))
+  composeWithDevTools(applyMiddleware(...middleware)),
 );
 
 export default store;

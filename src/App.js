@@ -6,6 +6,7 @@ import Home from './components/Home';
 import productDetails from './components/product/ProductDetails';
 
 import Cart from './components/cart/Cart';
+import Shipping from './components/cart/Shipping';
 
 import Login from './components/user/Login';
 import Register from './components/user/Register';
@@ -32,15 +33,23 @@ function App() {
           <Route path="/product/:id" component={productDetails} exact />
 
           <Route path="/cart" component={Cart} exact />
+          <ProtectedRoute path="/shipping" component={Shipping} exact />
 
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <ProtectedRoute path="/me" component={Profile} exact />
           <ProtectedRoute path="/me/update" component={updateProfile} exact />
-          <ProtectedRoute path="/password/update" component={updatePassword} exact />
+          <ProtectedRoute
+            path="/password/update"
+            component={updatePassword}
+            exact
+          />
           <Route path="/password/forgot" component={forgotPassword} exact />
-          <Route path="/password/reset/:token" component={ResetPassword} exact />
-
+          <Route
+            path="/password/reset/:token"
+            component={ResetPassword}
+            exact
+          />
         </div>
         <Footer />
       </div>

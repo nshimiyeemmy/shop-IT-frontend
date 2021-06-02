@@ -6,32 +6,31 @@ import Loader from '../layouts/Loader';
 import MetaData from '../layouts/MetaData';
 import { login, clearErrors } from '../../actions/userActions';
 
-const Login = ({ history }) => {
+const Login = ({ history, location }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { loading, isAuthenticated, error } = useSelector(
     (state) => state.auth
   );
+  const redirect = location.search ? location.search.split('=')[1] : '/';
   const alert = useAlert();
   const dispatch = useDispatch();
   useEffect(() => {
     if (isAuthenticated) {
       alert.success('Logged in successfully');
       dispatch(clearErrors());
-      history.push(`/`);
+      history.push(redirect);
     }
     if (error) {
       alert.error(error);
       dispatch(clearErrors());
     }
   }, [dispatch, alert, isAuthenticated, error, history]);
-
   //creating the submitHandler to handle the email and password submit
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(login(email, password));
   };
-
   return (
     <Fragment>
       {loading ? (

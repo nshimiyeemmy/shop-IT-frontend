@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import { addItemToCart, removeItemFromCart } from '../../actions/cartActions';
 
-const Cart = () => {
+const Cart = ({ history }) => {
   const dispatch = useDispatch();
   const alert = useAlert();
   const { cartItems } = useSelector((state) => state.cart);
@@ -25,6 +25,10 @@ const Cart = () => {
   const removeCartItemHandler = (id) => {
     dispatch(removeItemFromCart(id));
     alert.success('Item removed from cart successfully!');
+  };
+  // creating the checkoutHandler
+  const checkoutHandler = (e) => {
+    history.push('/login?redirect=shipping');
   };
   return (
     <Fragment>
@@ -69,9 +73,7 @@ const Cart = () => {
                         />
                       </div>
                       <div className="col-5 col-lg-3">
-                        <Link to={`/products/${item.product}`}>
-                          {item.name}
-                        </Link>
+                        <Link to={`/product/${item.product}`}>{item.name}</Link>
                       </div>
                       <div className="col-4 col-lg-2 mt-4 mt-lg-1">
                         <Link id="card_item_price">
@@ -153,7 +155,11 @@ const Cart = () => {
                 </p>
 
                 <hr />
-                <button id="checkout_btn" className="btn btn-primary btn-block">
+                <button
+                  id="checkout_btn"
+                  className="btn btn-primary btn-block"
+                  onClick={checkoutHandler}
+                >
                   Check out
                 </button>
               </div>

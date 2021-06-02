@@ -209,11 +209,11 @@ nav {
   margin: 1.8rem 0rem;
   padding: 0rem 0.7rem;
 }
-#head{
-    color:grey
+#head {
+  color: grey;
 }
-#price{
-    padding-left:95px !important;
+#price {
+  padding-left: 95px !important;
 }
 .cart-item a {
   color: grey;

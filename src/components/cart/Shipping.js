@@ -2,7 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { countries } from 'countries-list';
 import MetaData from '../layouts/MetaData';
 import { useDispatch, useSelector } from 'react-redux';
-import CheckoutSteps from './CheckoutSteps'
+import CheckoutSteps from './CheckoutSteps';
 import { saveShippingInfo } from '../../actions/cartActions';
 
 const Shipping = ({ history }) => {
@@ -21,12 +21,12 @@ const Shipping = ({ history }) => {
     dispatch(
       saveShippingInfo({ address, city, phoneNumber, postalCode, country })
     );
-    history.push('/confirm');
+    history.push('/order/confirm');
   };
   return (
     <Fragment>
       <MetaData title={'Shipping Info'} />
-      <CheckoutSteps shipping/>
+      <CheckoutSteps shipping />
       <div class="row wrapper">
         <div className="col-10 col-lg-5">
           <form className="shadow-lg" onSubmit={submitHandler}>

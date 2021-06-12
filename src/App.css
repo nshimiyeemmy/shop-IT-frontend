@@ -218,8 +218,8 @@ nav {
   color: grey;
 }
 .cart-item a:hover {
-    color: #fa9c23 !important;
-  }
+  color: #fa9c23 !important;
+}
 #delete_cart_item {
   color: red;
   background: white;

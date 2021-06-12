@@ -64,7 +64,7 @@ const ConfirmOrder = ({ history }) => {
                   <div className="col-4 col-lg-4 mt-4 mt-lg-0">
                     <p>
                       {item.cartQuantity} x ${item.price} =
-                      <b>  ${item.cartQuantity * item.price}</b>
+                      <b> ${(item.cartQuantity * item.price).toFixed(2)}</b>
                     </p>
                   </div>
                 </div>

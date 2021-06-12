@@ -12,7 +12,7 @@ import {
   forgotPasswordReducer,
 } from './reducers/userReducers';
 import { cartReducer } from './reducers/cartReducer';
-import { newOrderReducer } from './reducers/orderReducers';
+import { newOrderReducer, myOrdersReducer } from './reducers/orderReducers';
 //creating reducers for every resource such as users, products
 const reducer = combineReducers({
   products: productsReducers,
@@ -21,7 +21,8 @@ const reducer = combineReducers({
   user: userReducer,
   forgotPassword: forgotPasswordReducer,
   cart: cartReducer,
-  newOrder:newOrderReducer
+  newOrder: newOrderReducer,
+  myOrders: myOrdersReducer,
 });
 //this inital state contains all the data that we want to put in the state just before loading the application
 let initialState = {
@@ -29,8 +30,10 @@ let initialState = {
     cartItems: localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems'))
       : [],
-    shippingInfo:localStorage.getItem('shippingInfo')? JSON.parse(localStorage.getItem('shippingInfo')):{}
-  }
+    shippingInfo: localStorage.getItem('shippingInfo')
+      ? JSON.parse(localStorage.getItem('shippingInfo'))
+      : {},
+  },
 };
 
 //contains all the middleware that we want to use
@@ -38,7 +41,7 @@ const middleware = [thunk];
 const store = createStore(
   reducer,
   initialState,
-  composeWithDevTools(applyMiddleware(...middleware)),
+  composeWithDevTools(applyMiddleware(...middleware))
 );
 
 export default store;

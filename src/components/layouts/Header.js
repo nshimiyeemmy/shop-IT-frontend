@@ -26,7 +26,6 @@ const Header = () => {
             </Link>
           </div>
         </div>
-
         <div className="col-12 col-md-6 mt-2 mt-md-0">
           {/* this is a placeholder for the search component */}
           <Route render={({ history }) => <Search history={history} />} />
@@ -65,16 +64,15 @@ const Header = () => {
                 className="dropdown-menu"
                 aria-labelledby="dropDownMenuButton"
               >
-                {user && user.role !== 'admin' ? (
-                  <Link className="dropdown-item" to="/orders/me">
-                    Orders
-                  </Link>
-                ) : (
-                  <Link className="dropdown-item" to="/dashboard">
+                {user && user.role === 'admin' && (
+                  <Link className="dropdown-item down" to="/dashboard">
                     Dashboard
                   </Link>
                 )}
-                <Link className="dropdown-item text-danger" to="/me">
+                <Link className="dropdown-item" to="/orders/me">
+                  Orders
+                </Link>
+                <Link className="dropdown-item" to="/me">
                   Profile
                 </Link>
                 <Link

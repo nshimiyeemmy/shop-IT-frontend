@@ -16,7 +16,6 @@ const CheckoutSteps = ({ shipping, confirmOrder, payment }) => {
           <div className="triangle-incomplete"></div>
         </Link>
       )}
-
       {confirmOrder ? (
         <Link to="/order/confirm" className="float-right">
           <div className="triangle2-active"></div>

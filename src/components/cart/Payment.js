@@ -66,20 +66,16 @@ const Payment = ({ history }) => {
           },
         },
       });
-      console.log("reached here");
       if (result.error) {
         alert.error(result.error.message);
         document.querySelector('#pay_btn').disabled = false;
-      }
-      else {
+      } else {
         //Check whether the payment is processed or not
         if (result.paymentIntent.status === 'succeeded') {
-        //   TODO : Place New Order after the payment is recieved
+          //   TODO : Place New Order after the payment is recieved
           history.push('/success');
         } else {
-          alert.error(
-            'There was some Issue while processing your Payment'
-          );
+          alert.error('There was some Issue while processing your Payment');
         }
       }
     } catch (error) {

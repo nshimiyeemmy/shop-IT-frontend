@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
@@ -7,12 +7,14 @@ import productDetails from './components/product/ProductDetails';
 
 import Cart from './components/cart/Cart';
 import Shipping from './components/cart/Shipping';
+import ConfirmOrder from './components/cart/ConfirmOrder';
 
 import Login from './components/user/Login';
 import Register from './components/user/Register';
 import Profile from './components/user/Profile';
 import { loadUser } from './actions/userActions';
 import store from './store';
+import axios from 'axios';
 import ProtectedRoute from './components/route/ProtectedRoute';
 import updateProfile from './components/user/UpdatedProfile';
 import updatePassword from './components/user/UpdatePassword';
@@ -20,8 +22,15 @@ import forgotPassword from './components/user/ForgotPassword';
 import ResetPassword from './components/user/NewPassword';
 
 function App() {
+  const [StripeApiKey, setStripeApiKey] = useState('');
+
   useEffect(() => {
     store.dispatch(loadUser());
+    async function getStripeApiKey() {
+      const { data } = await axios.get('/api/v1/stripeapi');
+      setStripeApiKey(data.StripeApiKey);
+    }
+    getStripeApiKey();
   }, []);
   return (
     <Router>
@@ -34,6 +43,11 @@ function App() {
 
           <Route path="/cart" component={Cart} exact />
           <ProtectedRoute path="/shipping" component={Shipping} exact />
+          <ProtectedRoute
+            path="/order/confirm"
+            component={ConfirmOrder}
+            exact
+          />
 
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />

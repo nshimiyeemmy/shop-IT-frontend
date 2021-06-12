@@ -12,6 +12,7 @@ import {
   forgotPasswordReducer,
 } from './reducers/userReducers';
 import { cartReducer } from './reducers/cartReducer';
+import { newOrderReducer } from './reducers/orderReducers';
 //creating reducers for every resource such as users, products
 const reducer = combineReducers({
   products: productsReducers,
@@ -20,6 +21,7 @@ const reducer = combineReducers({
   user: userReducer,
   forgotPassword: forgotPasswordReducer,
   cart: cartReducer,
+  newOrder:newOrderReducer
 });
 //this inital state contains all the data that we want to put in the state just before loading the application
 let initialState = {

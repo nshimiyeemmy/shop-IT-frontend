@@ -59,11 +59,10 @@ nav {
   font-size: 1rem;
   color: white;
 }
-
 #cart_count {
   background-color: #febd69;
   padding: 0.2rem 0.5rem;
-  border-radius: 0.2rem;
+  border-radius: 0.3rem;
   color: black;
   font-weight: bold;
   font-size: 0.9rem;
@@ -218,7 +217,9 @@ nav {
 .cart-item a {
   color: grey;
 }
-
+.cart-item a:hover {
+    color: #fa9c23 !important;
+  }
 #delete_cart_item {
   color: red;
   background: white;
@@ -251,29 +252,24 @@ nav {
   border-radius: 1rem;
   padding: 2rem 1.5rem;
 }
-
 .order-summary-values {
   float: right;
   font-weight: bold;
 }
-
 .stockCounter input {
   border: none;
   width: 3rem;
   text-align: center;
 }
-
 .plus,
 .minus {
   padding: 0.1rem 0.5rem;
 }
-
 .stockCounter input::-webkit-outer-spin-button,
 .stockCounter input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 .form-control:disabled,
 .form-control[readonly] {
   background-color: white;
@@ -286,7 +282,6 @@ nav {
   justify-content: center;
   align-items: center;
   margin-top: 5rem;
-
   font-weight: 700;
 }
 

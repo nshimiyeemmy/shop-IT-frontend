@@ -26,7 +26,7 @@ import axios from 'axios';
 
 //stripe payment frontend required parameters
 import { Elements } from '@stripe/react-stripe-js';
-import {loadStripe } from '@stripe/stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
 
 function App() {
   const [StripeApiKey, setStripeApiKey] = useState('');
@@ -34,6 +34,7 @@ function App() {
     store.dispatch(loadUser());
     async function getStripeApiKey() {
       const { data } = await axios.get('/api/v1/stripeapi');
+      console.log(data.StripeApiKey);
       setStripeApiKey(data.StripeApiKey);
     }
     getStripeApiKey();
@@ -54,7 +55,7 @@ function App() {
             <Elements stripe={loadStripe(StripeApiKey)}>
               <ProtectedRoute path="/payment" component={Payment} />
             </Elements>
-           )}
+          )}
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <ProtectedRoute path="/me" component={Profile} exact />

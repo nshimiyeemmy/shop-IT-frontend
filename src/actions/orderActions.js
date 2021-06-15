@@ -21,7 +21,7 @@ export const createOrder = (order) => async (dispatch, getState) => {
     const { data } = await axios.post('/api/v1/order/new', order, config);
     dispatch({
       type: CREATE_ORDER_SUCCESS,
-      payload: data.Order,
+      payload: data,
     });
   } catch (error) {
     dispatch({
@@ -38,7 +38,7 @@ export const myOrders = () => async (dispatch) => {
     const { data } = await axios.get('/api/v1/orders/me');
     dispatch({
       type: MY_ORDERS_SUCCESS,
-      payload: data.Orders,
+      payload:data,
     });
   } catch (error) {
     dispatch({
@@ -47,7 +47,6 @@ export const myOrders = () => async (dispatch) => {
     });
   }
 };
-
 //Clear Erorrs using CLEAR_ERRORS constant
 export const clearErrors = () => async (dispatch) => {
   dispatch({

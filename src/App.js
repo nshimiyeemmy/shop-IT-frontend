@@ -22,6 +22,8 @@ import updatePassword from './components/user/UpdatePassword';
 import forgotPassword from './components/user/ForgotPassword';
 import ResetPassword from './components/user/NewPassword';
 
+import ListOrders from './components/order/ListOrders';
+
 import store from './store';
 import axios from 'axios';
 
@@ -35,7 +37,6 @@ function App() {
     store.dispatch(loadUser());
     async function getStripeApiKey() {
       const { data } = await axios.get('/api/v1/stripeapi');
-      console.log(data.StripeApiKey);
       setStripeApiKey(data.StripeApiKey);
     }
     getStripeApiKey();
@@ -57,6 +58,7 @@ function App() {
               <ProtectedRoute path="/payment" component={Payment} />
             </Elements>
           )}
+
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
           <ProtectedRoute path="/me" component={Profile} exact />
@@ -74,6 +76,7 @@ function App() {
             component={ResetPassword}
             exact
           />
+          <ProtectedRoute path="/orders/me" component={ListOrders} exact />
         </div>
         <Footer />
       </div>

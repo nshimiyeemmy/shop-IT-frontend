@@ -1,3 +1,5 @@
+
+
 //contains the codes to connect to the extension {react-redux}
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -12,9 +14,10 @@ import {
   forgotPasswordReducer,
 } from './reducers/userReducers';
 import { cartReducer } from './reducers/cartReducer';
-import { newOrderReducer, myOrdersReducer } from './reducers/orderReducers';
+import { newOrderReducer, myOrdersReducer,OrderDetailsReducer } from './reducers/orderReducers';
 //creating reducers for every resource such as users, products
 const reducer = combineReducers({
+
   products: productsReducers,
   productDetails: productDetailsReducer,
   auth: authReducer,
@@ -23,9 +26,11 @@ const reducer = combineReducers({
   cart: cartReducer,
   newOrder: newOrderReducer,
   myOrders: myOrdersReducer,
+  orderDetails:OrderDetailsReducer
 });
 //this inital state contains all the data that we want to put in the state just before loading the application
 let initialState = {
+
   cart: {
     cartItems: localStorage.getItem('cartItems')
       ? JSON.parse(localStorage.getItem('cartItems'))

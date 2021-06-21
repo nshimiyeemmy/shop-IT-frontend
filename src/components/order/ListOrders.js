@@ -51,11 +51,9 @@ const ListOrders = () => {
       ],
       rows: [],
     };
-
-    let arrayOrders = [];
-    if (orders.Order) arrayOrders.push(...orders.Order);
-    arrayOrders.map((Order) => {
-      console.log({ Order });
+    // let arrayOrders = [];
+    // if (orders.Order) arrayOrders.push(...orders.Order);
+    orders.map((Order) => {
       data.rows.push({
         id: Order._id,
         numOfItems: Order.orderItems.length,
@@ -76,7 +74,6 @@ const ListOrders = () => {
     });
     return data;
   };
-
   return (
     <Fragment>
       <MetaData title={'My Orders'} />

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Header from './components/layouts/Header';
 import Footer from './components/layouts/Footer';
 import Home from './components/Home';
@@ -22,6 +22,7 @@ import updatePassword from './components/user/UpdatePassword';
 import forgotPassword from './components/user/ForgotPassword';
 import ResetPassword from './components/user/NewPassword';
 
+import OrderDetails from './components/order/OrderDetails';
 import ListOrders from './components/order/ListOrders';
 
 import store from './store';
@@ -41,6 +42,7 @@ function App() {
     }
     getStripeApiKey();
   }, []);
+
   return (
     <Router>
       <div className="App">
@@ -77,6 +79,7 @@ function App() {
             exact
           />
           <ProtectedRoute path="/orders/me" component={ListOrders} exact />
+          <ProtectedRoute path="/order/:id" component={OrderDetails} exact />
         </div>
         <Footer />
       </div>

@@ -7,6 +7,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import {
   productsReducers,
   productDetailsReducer,
+  newReviewReducer
 } from './reducers/productReducers';
 import {
   authReducer,
@@ -26,7 +27,8 @@ const reducer = combineReducers({
   cart: cartReducer,
   newOrder: newOrderReducer,
   myOrders: myOrdersReducer,
-  orderDetails:OrderDetailsReducer
+  orderDetails:OrderDetailsReducer,
+  newReview:newReviewReducer
 });
 //this inital state contains all the data that we want to put in the state just before loading the application
 let initialState = {

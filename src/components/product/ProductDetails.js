@@ -2,6 +2,7 @@ import React, { Fragment, useState, useEffect } from 'react';
 import { Carousel } from 'react-bootstrap';
 import Loader from '../layouts/Loader';
 import MetaData from '../layouts/MetaData';
+import ListReviews from '../review/ListReviews';
 import { useDispatch, useSelector } from 'react-redux';
 import { useAlert } from 'react-alert';
 import {
@@ -36,7 +37,7 @@ const ProductDetails = ({ match }) => {
       dispatch(clearErrors());
     }
     if (success) {
-      alert.error('Review added successfully');
+      alert.success('Review added successfully');
       dispatch({ type: NEW_REVIEW_RESET });
     }
   }, [dispatch, alert, error, reviewError, match.params.id, success]);
@@ -131,9 +132,7 @@ const ProductDetails = ({ match }) => {
               <div className="rating-outer">
                 <div
                   className="rating-inner"
-                  style={{
-                    width: `${(product.ratings / 5) * 100}%`,
-                  }}
+                  style={{ width: `${(product.ratings / 5) * 100}%` }}
                 ></div>
               </div>
               <span id="no_of_reviews">({product.numOfReviews} Reviews)</span>
@@ -278,6 +277,9 @@ const ProductDetails = ({ match }) => {
               </div>
             </div>
           </div>
+          {product.reviews && product.reviews.length > 0 && (
+            <ListReviews reviews={product.reviews} />
+          )}
         </Fragment>
       )}
     </Fragment>

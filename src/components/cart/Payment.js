@@ -47,7 +47,9 @@ const Payment = ({ history }) => {
   const order = {
     orderItems: cartItems,
     shippingInfo,
+    user,
   };
+
   //getting orderInfo from the session storage
   const orderInfo = JSON.parse(sessionStorage.getItem('OrderInfo'));
   if (orderInfo) {

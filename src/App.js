@@ -14,9 +14,6 @@ import ConfirmOrder from './components/cart/ConfirmOrder';
 import Payment from './components/cart/Payment';
 import OrderSuccess from './components/cart/OrderSuccess';
 
-//admin imports
-import Dashboard from './components/admin/Dashboard';
-
 //authentication and authorization imports
 import Login from './components/user/Login';
 import Register from './components/user/Register';
@@ -32,12 +29,17 @@ import ResetPassword from './components/user/NewPassword';
 import OrderDetails from './components/order/OrderDetails';
 import ListOrders from './components/order/ListOrders';
 
+//import admin routes
+import Dashboard from './components/admin/Dashboard';
+import ProductList from './components/admin/ProductList';
+
 import store from './store';
 import axios from 'axios';
 
 //stripe payment frontend required parameters
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+
 
 function App() {
   const [StripeApiKey, setStripeApiKey] = useState('');
@@ -88,12 +90,8 @@ function App() {
           <ProtectedRoute path="/orders/me" component={ListOrders} exact />
           <ProtectedRoute path="/order/:id" component={OrderDetails} exact />
         </div>
-        <ProtectedRoute
-          path="/dashboard"
-          isAdmin={true}
-          component={Dashboard}
-          exact
-        />
+        <ProtectedRoute path="/dashboard" isAdmin={true} component={Dashboard} exact/>
+        <ProtectedRoute path="/admin/products" isAdmin={true} component={ProductList} exact/>
         <Footer />
       </div>
     </Router>
